@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Beranda - SIAM UB</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #F6F4EC; }
+  </style>
+</head>
+<body class="min-h-screen flex text-slate-800" data-required-role="Mahasiswa">
+
+  <!-- Sidebar -->
+  <aside class="w-64 bg-[#2042B8] text-white flex flex-col justify-between shrink-0 min-h-screen">
+    <div>
+      <!-- Brand -->
+      <div class="px-6 py-6 flex items-center gap-3">
+        <div class="w-10 h-10 rounded-full bg-slate-900 border-2 border-amber-400 flex items-center justify-center overflow-hidden shrink-0">
+          <img src="assets/logo-ub.png" alt="Logo UB" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+          <span class="hidden text-amber-400 font-bold text-xs">UB</span>
+        </div>
+        <div>
+          <h1 class="font-bold text-base leading-tight">SIAM UB</h1>
+          <p class="text-[11px] text-blue-200">Universitas Brawijaya</p>
+        </div>
+      </div>
+
+      <!-- Navigation -->
+      <nav class="mt-4 px-3 space-y-1.5 text-sm font-medium">
+        <a href="mahasiswa-beranda.html" class="flex items-center gap-3 px-4 py-2.5 rounded-full bg-white text-[#2042B8] font-semibold shadow-sm">
+          <i data-lucide="layout-grid" class="w-4 h-4"></i> Beranda
+        </a>
+        <a href="mahasiswa-pengisian-krs.html" class="flex items-center gap-3 px-4 py-2.5 rounded-full text-blue-100 hover:bg-white/10 transition">
+          <i data-lucide="file-plus-2" class="w-4 h-4"></i> Pengisian KRS
+        </a>
+        <a href="mahasiswa-krs-saya.html" class="flex items-center gap-3 px-4 py-2.5 rounded-full text-blue-100 hover:bg-white/10 transition">
+          <i data-lucide="user-check" class="w-4 h-4"></i> KRS Saya
+        </a>
+        <a href="javascript:void(0)" aria-disabled="true" title="Fitur tidak termasuk dalam Modul KRS Online" class="flex items-center gap-3 px-4 py-2.5 rounded-full text-blue-100 cursor-not-allowed opacity-70">
+          <i data-lucide="calendar-days" class="w-4 h-4"></i> Jadwal Kuliah
+        </a>
+        <a href="javascript:void(0)" aria-disabled="true" title="Fitur tidak termasuk dalam Modul KRS Online" class="flex items-center gap-3 px-4 py-2.5 rounded-full text-blue-100 cursor-not-allowed opacity-70">
+          <i data-lucide="graduation-cap" class="w-4 h-4"></i> Hasil Studi (KHS)
+        </a>
+        <a href="mahasiswa-status-krs.html" class="flex items-center gap-3 px-4 py-2.5 rounded-full text-blue-100 hover:bg-white/10 transition">
+          <i data-lucide="activity" class="w-4 h-4"></i> Status KRS
+        </a>
+        <a href="mahasiswa-cetak-krs.html" class="flex items-center gap-3 px-4 py-2.5 rounded-full text-blue-100 hover:bg-white/10 transition">
+          <i data-lucide="printer" class="w-4 h-4"></i> Cetak KRS
+        </a>
+        <a href="javascript:void(0)" aria-disabled="true" title="Fitur tidak termasuk dalam Modul KRS Online" class="flex items-center gap-3 px-4 py-2.5 rounded-full text-blue-100 cursor-not-allowed opacity-70">
+          <i data-lucide="history" class="w-4 h-4"></i> Riwayat Akademik
+        </a>
+      </nav>
+    </div>
+
+    <!-- Logout -->
+    <div class="p-4 border-t border-white/10">
+      <a href="index.html" data-logout="true" id="btnLogout" class="flex items-center gap-3 px-4 py-2.5 rounded-full text-sm text-blue-100 hover:bg-white/10 transition">
+        <i data-lucide="log-out" class="w-4 h-4"></i> Keluar Sistem
+      </a>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <div class="flex-1 flex flex-col min-w-0">
+    <!-- Top Header -->
+    <header class="px-8 py-5 flex items-center justify-between border-b border-slate-200/70 bg-[#F6F4EC]">
+      <div>
+        <h2 class="text-xl font-bold text-slate-900">Beranda</h2>
+        <p class="text-xs text-slate-500">Ringkasan aktivitas akademik semester berjalan</p>
+      </div>
+
+      <div class="flex items-center gap-4">
+        <button class="relative w-10 h-10 rounded-full bg-white border border-slate-200/80 flex items-center justify-center text-slate-600 hover:text-[#2042B8] shadow-sm">
+          <i data-lucide="bell" class="w-4 h-4"></i>
+          <span class="absolute top-2 right-2.5 w-2 h-2 rounded-full bg-amber-400"></span>
+        </button>
+
+        <div class="flex items-center gap-3 bg-white border border-slate-200/80 pl-1.5 pr-4 py-1.5 rounded-full shadow-sm">
+          <div data-user-avatar class="w-8 h-8 rounded-full bg-[#2042B8] text-white text-xs font-bold flex items-center justify-center">AP</div>
+          <div class="leading-tight">
+            <p id="userName" data-user-name class="text-xs font-bold text-slate-800">Arya Putra Rahman Dhika</p>
+            <p id="userRole" data-user-meta class="text-[11px] text-slate-500">Mahasiswa</p>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Content Body -->
+    <main class="p-8 space-y-7 max-w-6xl w-full">
+
+      <!-- Welcome & Academic Summary Card -->
+      <section class="bg-white rounded-2xl shadow-sm border border-slate-200/70 overflow-hidden">
+        <!-- Blue Top Banner -->
+        <div class="bg-[#2042B8] px-7 py-5 flex flex-wrap items-center justify-between gap-4 text-white">
+          <div class="flex items-center gap-4">
+            <div class="w-11 h-11 rounded-xl bg-white/15 flex items-center justify-center">
+              <i data-lucide="hand" class="w-5 h-5 text-white"></i>
+            </div>
+            <div>
+              <div class="flex items-center gap-2.5 flex-wrap">
+                <h3 class="text-lg font-bold">Selamat Datang, <span id="welcomeName">Arya Putra Rahman Dhika</span></h3>
+                <span class="bg-white text-[#2042B8] text-[10px] font-bold px-2.5 py-0.5 rounded-full tracking-wide">MAHASISWA</span>
+              </div>
+              <p id="userProdi" class="text-xs text-blue-100 mt-0.5">Program Studi Teknik Informatika – Fakultas Ilmu Komputer</p>
+            </div>
+          </div>
+
+          <div class="bg-white text-slate-700 px-3.5 py-1.5 rounded-full text-xs font-semibold flex items-center gap-2 shadow-sm">
+            <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+            Status Akademik: Aktif
+          </div>
+        </div>
+
+        <!-- Stats Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-slate-100 px-7 py-6">
+          <div class="pb-4 sm:pb-0 sm:pr-6">
+            <p class="text-[10px] font-bold tracking-wider text-slate-400 uppercase">Nomor Induk Mahasiswa</p>
+            <p id="statNim" class="text-base font-extrabold text-slate-900 mt-1.5">255150407111067</p>
+            <p class="text-xs text-slate-500 mt-1">Angkatan 2025</p>
+          </div>
+
+          <div class="py-4 sm:py-0 sm:px-6">
+            <p class="text-[10px] font-bold tracking-wider text-slate-400 uppercase">Semester Aktif</p>
+            <p id="statSemester" class="text-base font-extrabold text-[#2042B8] mt-1.5">Ganjil 2026/2027</p>
+            <p class="text-xs text-slate-500 mt-1">Semester 3 Reguler</p>
+          </div>
+
+          <div class="py-4 sm:py-0 sm:px-6">
+            <p class="text-[10px] font-bold tracking-wider text-slate-400 uppercase">IPS Semester Lalu</p>
+            <div class="flex items-center gap-2 mt-1.5">
+              <span id="statIps" class="text-xl font-extrabold text-slate-900">3.25</span>
+              <span class="bg-emerald-50 text-emerald-700 text-[11px] font-semibold px-2 py-0.5 rounded-full">Memuaskan</span>
+            </div>
+            <p class="text-xs text-slate-500 mt-1">Indeks Prestasi Semester</p>
+          </div>
+
+          <div class="pt-4 sm:pt-0 sm:pl-6">
+            <p class="text-[10px] font-bold tracking-wider text-slate-400 uppercase">Batas Maksimal Beban</p>
+            <div class="flex items-baseline gap-2 mt-1.5">
+              <span id="statMaxSks" class="text-xl font-extrabold text-[#2042B8]">24 SKS</span>
+              <span class="text-[11px] text-slate-500">(Beban Maksimum)</span>
+            </div>
+            <p id="statMaxSksRule" class="text-xs text-slate-500 mt-1">Berdasarkan IPS ≥ 3.00</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Menu Utama KRS -->
+      <section>
+        <div class="flex items-center justify-between mb-4">
+          <h3 class="text-base font-bold text-slate-900">Menu Utama KRS</h3>
+          <p class="text-xs text-slate-500">Periode Pengisian: <span class="font-semibold text-slate-700">10 Nov – 25 Nov 2026</span></p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <!-- Card 1 -->
+          <div class="bg-white rounded-2xl p-5 border border-slate-200/70 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="w-10 h-10 rounded-xl bg-blue-50 text-[#2042B8] flex items-center justify-center mb-4">
+                <i data-lucide="file-plus-2" class="w-5 h-5"></i>
+              </div>
+              <h4 class="font-bold text-slate-900 text-sm">Pengisian KRS</h4>
+              <p class="text-xs text-slate-500 mt-1.5 leading-relaxed">Pilih mata kuliah semester berjalan sesuai paket dan jadwal yang tersedia.</p>
+            </div>
+            <a href="mahasiswa-pengisian-krs.html" class="mt-5 w-full bg-[#2042B8] hover:bg-blue-800 text-white text-xs font-semibold py-2.5 rounded-full flex items-center justify-center gap-1.5 transition">
+              Buka Menu <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="bg-white rounded-2xl p-5 border border-slate-200/70 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="w-10 h-10 rounded-xl bg-blue-50 text-[#2042B8] flex items-center justify-center mb-4">
+                <i data-lucide="clipboard-list" class="w-5 h-5"></i>
+              </div>
+              <h4 class="font-bold text-slate-900 text-sm">KRS Saya</h4>
+              <p class="text-xs text-slate-500 mt-1.5 leading-relaxed">Tinjau dan ajukan KRS sementara ke Dosen PA untuk diverifikasi.</p>
+            </div>
+            <a href="mahasiswa-krs-saya.html" class="mt-5 w-full bg-[#2042B8] hover:bg-blue-800 text-white text-xs font-semibold py-2.5 rounded-full flex items-center justify-center gap-1.5 transition">
+              Buka Menu <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="bg-white rounded-2xl p-5 border border-slate-200/70 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center mb-4">
+                <i data-lucide="clock" class="w-5 h-5"></i>
+              </div>
+              <div class="flex items-center justify-between gap-2">
+                <h4 class="font-bold text-slate-900 text-sm">Status KRS</h4>
+                <span id="badgeStatusKrs" class="bg-amber-100 text-amber-700 text-[10px] font-bold px-2.5 py-0.5 rounded-full">Pending</span>
+              </div>
+              <p class="text-xs text-slate-500 mt-1.5 leading-relaxed">Pantau status persetujuan dan catatan revisi dari Dosen PA Anda.</p>
+            </div>
+            <a href="mahasiswa-status-krs.html" class="mt-5 w-full bg-amber-500 hover:bg-amber-600 text-slate-900 text-xs font-bold py-2.5 rounded-full flex items-center justify-center gap-1.5 transition">
+              Cek Status <i data-lucide="eye" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="bg-white rounded-2xl p-5 border border-slate-200/70 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="w-10 h-10 rounded-xl bg-blue-50 text-[#2042B8] flex items-center justify-center mb-4">
+                <i data-lucide="file-text" class="w-5 h-5"></i>
+              </div>
+              <h4 class="font-bold text-slate-900 text-sm">Cetak KRS</h4>
+              <p class="text-xs text-slate-500 mt-1.5 leading-relaxed">Unduh dokumen resmi KRS format PDF yang telah disetujui Dosen PA.</p>
+            </div>
+            <a href="mahasiswa-cetak-krs.html" class="mt-5 w-full bg-white hover:bg-slate-50 text-slate-800 border border-slate-300 text-xs font-semibold py-2.5 rounded-full flex items-center justify-center gap-1.5 transition">
+              <i data-lucide="download" class="w-3.5 h-3.5"></i> Cetak PDF
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Catatan Penting -->
+      <section class="bg-[#EFECE1] border border-slate-200/80 rounded-2xl px-6 py-4 flex flex-wrap items-center justify-between gap-4">
+        <div class="flex items-center gap-3.5">
+          <div class="w-9 h-9 rounded-full bg-[#2042B8] text-white flex items-center justify-center shrink-0">
+            <i data-lucide="info" class="w-4 h-4"></i>
+          </div>
+          <div>
+            <h5 class="text-xs font-bold text-slate-900">Catatan Penting Pengisian KRS</h5>
+            <p class="text-xs text-slate-600 mt-0.5">Pastikan tidak ada jadwal kuliah yang bentrok sebelum mengajukan KRS ke Dosen Pembimbing Akademik.</p>
+          </div>
+        </div>
+        <a href="javascript:void(0)" aria-disabled="true" title="Fitur tidak termasuk dalam Modul KRS Online" class="text-xs font-bold text-[#2042B8] flex items-center gap-1 cursor-not-allowed opacity-70">
+          Lihat Jadwal Kuliah <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+        </a>
+      </section>
+
+    </main>
+  </div>
+
+  <script>lucide.createIcons();</script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-client.js"></script>
+  <script src="js/auth-guard.js"></script>
+</body>
+</html>

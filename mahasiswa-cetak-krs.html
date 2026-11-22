@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cetak KRS - SIAM UB</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #F6F4EC; }
+    @media print {
+      aside, header, #actionBar { display: none !important; }
+      body { background: white !important; }
+      #dokumenKrs { box-shadow: none !important; border: none !important; margin: 0 !important; }
+    }
+  </style>
+</head>
+<body class="min-h-screen flex text-slate-800" data-required-role="Mahasiswa">
+
+  <!-- Sidebar -->
+  <aside class="w-64 bg-[#2042B8] text-white flex flex-col justify-between shrink-0 min-h-screen">
+    <div>
+      <div class="px-6 py-6 flex items-center gap-3">
+        <div class="w-10 h-10 rounded-full bg-slate-900 border-2 border-amber-400 flex items-center justify-center overflow-hidden shrink-0">
+          <img src="assets/logo-ub.png" alt="Logo UB" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+          <span class="hidden text-amber-400 font-bold text-xs">UB</span>
+        </div>
+        <div>
+          <h1 class="font-bold text-base leading-tight">SIAM UB</h1>
+          <p class="text-[11px] text-blue-200">Universitas Brawijaya</p>
+        </div>
+      </div>
+
+      <nav class="mt-4 px-3 space-y-1.5 text-sm font-medium">
+        <a href="mahasiswa-beranda.html" class="flex items-center gap-3 px-4 py-2.5 rounded-full text-blue-100 hover:bg-white/10 transition">
+          <i data-lucide="layout-grid" class="w-4 h-4"></i> Beranda
+        </a>
+        <a href="mahasiswa-pengisian-krs.html" class="flex items-center gap-3 px-4 py-2.5 rounded-full text-blue-100 hover:bg-white/10 transition">
+          <i data-lucide="file-plus-2" class="w-4 h-4"></i> Pengisian KRS
+        </a>
+        <a href="mahasiswa-krs-saya.html" class="flex items-center gap-3 px-4 py-2.5 rounded-full text-blue-100 hover:bg-white/10 transition">
+          <i data-lucide="user-check" class="w-4 h-4"></i> KRS Saya
+        </a>
+        <a href="javascript:void(0)" aria-disabled="true" title="Fitur tidak termasuk dalam Modul KRS Online" class="flex items-center gap-3 px-4 py-2.5 rounded-full text-blue-100 cursor-not-allowed opacity-70">
+          <i data-lucide="calendar-days" class="w-4 h-4"></i> Jadwal Kuliah
+        </a>
+        <a href="javascript:void(0)" aria-disabled="true" title="Fitur tidak termasuk dalam Modul KRS Online" class="flex items-center gap-3 px-4 py-2.5 rounded-full text-blue-100 cursor-not-allowed opacity-70">
+          <i data-lucide="graduation-cap" class="w-4 h-4"></i> Hasil Studi (KHS)
+        </a>
+        <a href="mahasiswa-status-krs.html" class="flex items-center gap-3 px-4 py-2.5 rounded-full text-blue-100 hover:bg-white/10 transition">
+          <i data-lucide="activity" class="w-4 h-4"></i> Status KRS
+        </a>
+        <a href="mahasiswa-cetak-krs.html" class="flex items-center gap-3 px-4 py-2.5 rounded-full bg-white text-[#2042B8] font-semibold shadow-sm">
+          <i data-lucide="printer" class="w-4 h-4"></i> Cetak KRS
+        </a>
+        <a href="javascript:void(0)" aria-disabled="true" title="Fitur tidak termasuk dalam Modul KRS Online" class="flex items-center gap-3 px-4 py-2.5 rounded-full text-blue-100 cursor-not-allowed opacity-70">
+          <i data-lucide="history" class="w-4 h-4"></i> Riwayat Akademik
+        </a>
+      </nav>
+    </div>
+
+    <div class="p-4 border-t border-white/10">
+      <a href="index.html" data-logout="true" class="flex items-center gap-3 px-4 py-2.5 rounded-full text-sm text-blue-100 hover:bg-white/10 transition">
+        <i data-lucide="log-out" class="w-4 h-4"></i> Keluar Sistem
+      </a>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <div class="flex-1 flex flex-col min-w-0">
+    <!-- Top Header -->
+    <header class="px-8 py-5 flex items-center justify-between border-b border-slate-200/70 bg-[#F6F4EC]">
+      <div>
+        <h2 class="text-xl font-bold text-slate-900">Cetak KRS</h2>
+        <p class="text-xs text-slate-500">Cetak Kartu Rencana Studi</p>
+      </div>
+
+      <div class="flex items-center gap-4">
+        <button class="relative w-10 h-10 rounded-full bg-white border border-slate-200/80 flex items-center justify-center text-slate-600 shadow-sm">
+          <i data-lucide="bell" class="w-4 h-4"></i>
+          <span class="absolute top-2 right-2.5 w-2 h-2 rounded-full bg-amber-400"></span>
+        </button>
+        <div class="flex items-center gap-3 bg-white border border-slate-200/80 pl-1.5 pr-4 py-1.5 rounded-full shadow-sm">
+          <div data-user-avatar class="w-8 h-8 rounded-full bg-[#2042B8] text-white text-xs font-bold flex items-center justify-center">AP</div>
+          <div class="leading-tight">
+            <p data-user-name class="text-xs font-bold text-slate-800">Arya Putra Rahman Dhika</p>
+            <p data-user-meta class="text-[11px] text-slate-500">Mahasiswa</p>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Content Body -->
+    <main class="p-8 space-y-5 max-w-5xl w-full">
+
+      <!-- Status & Action Bar -->
+      <div id="actionBar" class="bg-white rounded-2xl border border-slate-200/70 px-6 py-4 flex flex-wrap items-center justify-between gap-4 shadow-sm">
+        <div class="flex items-center gap-4">
+          <span class="bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-bold px-3 py-1 rounded-full inline-flex items-center gap-1.5">
+            <i data-lucide="check-circle-2" class="w-3.5 h-3.5"></i> Disetujui
+          </span>
+          <div>
+            <p class="text-xs font-bold text-slate-900">KRS Sah & Terverifikasi</p>
+            <p class="text-[11px] text-slate-500">Divalidasi oleh Dosen PA pada 18 Feb 2026, 14:20 WIB</p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-2.5">
+          <button onclick="window.print()" class="bg-white hover:bg-slate-50 text-slate-700 border border-slate-300 text-xs font-semibold px-4 py-2 rounded-full inline-flex items-center gap-1.5 transition">
+            <i data-lucide="printer" class="w-3.5 h-3.5"></i> Cetak
+          </button>
+          <button id="btnUnduhPdf" onclick="window.print()" class="bg-[#2042B8] hover:bg-blue-800 text-white text-xs font-semibold px-5 py-2 rounded-full inline-flex items-center gap-1.5 transition">
+            <i data-lucide="download" class="w-3.5 h-3.5"></i> Unduh PDF
+          </button>
+        </div>
+      </div>
+
+      <!-- Dokumen KRS -->
+      <article id="dokumenKrs" class="bg-white rounded-2xl border border-slate-200/70 shadow-sm p-8 md:p-10">
+
+        <!-- Kop Surat -->
+        <div class="flex items-center justify-center gap-4 pb-5 border-b-2 border-[#2042B8]">
+          <div class="w-14 h-14 rounded-full bg-slate-900 border-2 border-amber-400 flex items-center justify-center overflow-hidden shrink-0">
+            <img src="assets/logo-ub.png" alt="Logo UB" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+            <span class="hidden text-amber-400 font-bold text-sm">UB</span>
+          </div>
+          <div class="text-center">
+            <p class="text-[11px] font-semibold tracking-wider text-slate-600 uppercase">Kementerian Pendidikan Tinggi, Sains, dan Teknologi</p>
+            <h3 class="text-base font-extrabold text-[#2042B8] tracking-tight">UNIVERSITAS BRAWIJAYA — FAKULTAS ILMU KOMPUTER</h3>
+            <p class="text-[10px] text-slate-500 mt-0.5">Jl. Veteran No. 8, Malang 65145, Indonesia • Laman: filkom.ub.ac.id • Email: filkom@ub.ac.id</p>
+          </div>
+        </div>
+
+        <!-- Judul Dokumen -->
+        <div class="text-center my-6">
+          <h4 class="text-sm font-extrabold tracking-wide text-slate-900 uppercase">KARTU RENCANA STUDI (KRS) — SEMESTER GANJIL 2026/2027</h4>
+          <div class="w-16 h-1 bg-amber-400 mx-auto mt-2 rounded-full"></div>
+        </div>
+
+        <!-- Biodata Mahasiswa -->
+        <div class="bg-[#FAF9F5] border border-slate-200/70 rounded-xl p-5 grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2 text-xs mb-6">
+          <div class="grid grid-cols-3"><span class="text-slate-500">Nama Mahasiswa</span><span class="col-span-2 font-bold text-slate-900">: Arya Putra Rahman Dhika</span></div>
+          <div class="grid grid-cols-3"><span class="text-slate-500">Tahun Akademik</span><span class="col-span-2 font-bold text-slate-900">: 2026/2027 – Ganjil</span></div>
+          <div class="grid grid-cols-3"><span class="text-slate-500">NIM</span><span class="col-span-2 font-bold text-slate-900">: 255150407111067</span></div>
+          <div class="grid grid-cols-3"><span class="text-slate-500">Dosen PA</span><span class="col-span-2 font-semibold text-slate-800">: Lia Ninda Safitri, S.Kom., M.T.</span></div>
+          <div class="grid grid-cols-3"><span class="text-slate-500">Program Studi</span><span class="col-span-2 font-semibold text-slate-800">: S1 Sistem Informasi</span></div>
+          <div class="grid grid-cols-3"><span class="text-slate-500">Beban SKS Maksimal</span><span class="col-span-2 font-bold text-[#2042B8]">: 24 SKS</span></div>
+          <div class="grid grid-cols-3"><span class="text-slate-500">Fakultas</span><span class="col-span-2 font-semibold text-slate-800">: Ilmu Komputer</span></div>
+          <div class="grid grid-cols-3"><span class="text-slate-500">IPK Terakhir</span><span class="col-span-2 font-bold text-[#2042B8]">: <span class="bg-blue-50 px-2 py-0.5 rounded">3.82</span></span></div>
+        </div>
+
+        <!-- Tabel Mata Kuliah -->
+        <div class="overflow-x-auto mb-6">
+          <table class="w-full text-left border-collapse text-xs">
+            <thead>
+              <tr class="bg-[#F6F4EC] text-slate-700 font-bold border-y border-slate-200">
+                <th class="py-3 px-3 text-center">No</th>
+                <th class="py-3 px-3">Kode MK</th>
+                <th class="py-3 px-3">Nama Mata Kuliah</th>
+                <th class="py-3 px-3 text-center">SKS</th>
+                <th class="py-3 px-3 text-center">Kelas</th>
+                <th class="py-3 px-3">Jadwal & Ruangan</th>
+                <th class="py-3 px-3">Dosen Pengampu</th>
+              </tr>
+            </thead>
+            <tbody id="tbodyCetakKrs" class="divide-y divide-slate-100">
+              <tr>
+                <td class="py-3 px-3 text-center text-slate-500">1</td>
+                <td class="py-3 px-3 font-bold text-[#2042B8]">CIF61001</td>
+                <td class="py-3 px-3 font-semibold text-slate-800">Rekayasa Perangkat Lunak</td>
+                <td class="py-3 px-3 text-center font-bold">3</td>
+                <td class="py-3 px-3 text-center"><span class="bg-[#F2EFE6] px-2 py-0.5 rounded font-semibold">SI-B</span></td>
+                <td class="py-3 px-3 text-slate-600">Senin, 07:30 - 10:00<br><span class="text-[11px] text-slate-400">(Gedung F.201)</span></td>
+                <td class="py-3 px-3 text-slate-700">Dr. Eng. Herman Tolle, S.T., M.T.</td>
+              </tr>
+              <tr>
+                <td class="py-3 px-3 text-center text-slate-500">2</td>
+                <td class="py-3 px-3 font-bold text-[#2042B8]">CIF61003</td>
+                <td class="py-3 px-3 font-semibold text-slate-800">Manajemen Basis Data Terdistribusi</td>
+                <td class="py-3 px-3 text-center font-bold">3</td>
+                <td class="py-3 px-3 text-center"><span class="bg-[#F2EFE6] px-2 py-0.5 rounded font-semibold">SI-B</span></td>
+                <td class="py-3 px-3 text-slate-600">Senin, 13:00 - 15:30<br><span class="text-[11px] text-slate-400">(Lab Komputasi 3)</span></td>
+                <td class="py-3 px-3 text-slate-700">Supriyono, S.Kom., M.Kom.</td>
+              </tr>
+              <tr>
+                <td class="py-3 px-3 text-center text-slate-500">3</td>
+                <td class="py-3 px-3 font-bold text-[#2042B8]">CIF61005</td>
+                <td class="py-3 px-3 font-semibold text-slate-800">Arsitektur Enterprise</td>
+                <td class="py-3 px-3 text-center font-bold">3</td>
+                <td class="py-3 px-3 text-center"><span class="bg-[#F2EFE6] px-2 py-0.5 rounded font-semibold">SI-A</span></td>
+                <td class="py-3 px-3 text-slate-600">Selasa, 09:30 - 12:00<br><span class="text-[11px] text-slate-400">(Gedung F.302)</span></td>
+                <td class="py-3 px-3 text-slate-700">Lia Ninda Safitri, S.Kom., M.T.</td>
+              </tr>
+              <tr>
+                <td class="py-3 px-3 text-center text-slate-500">4</td>
+                <td class="py-3 px-3 font-bold text-[#2042B8]">CIF61007</td>
+                <td class="py-3 px-3 font-semibold text-slate-800">Analisis & Perancangan SI</td>
+                <td class="py-3 px-3 text-center font-bold">3</td>
+                <td class="py-3 px-3 text-center"><span class="bg-[#F2EFE6] px-2 py-0.5 rounded font-semibold">SI-B</span></td>
+                <td class="py-3 px-3 text-slate-600">Rabu, 08:00 - 10:30<br><span class="text-[11px] text-slate-400">(Gedung G.104)</span></td>
+                <td class="py-3 px-3 text-slate-700">Issa Arwani, S.Kom., M.T.</td>
+              </tr>
+              <tr>
+                <td class="py-3 px-3 text-center text-slate-500">5</td>
+                <td class="py-3 px-3 font-bold text-[#2042B8]">CIF61009</td>
+                <td class="py-3 px-3 font-semibold text-slate-800">Pemrograman Web Lanjut</td>
+                <td class="py-3 px-3 text-center font-bold">3</td>
+                <td class="py-3 px-3 text-center"><span class="bg-[#F2EFE6] px-2 py-0.5 rounded font-semibold">SI-C</span></td>
+                <td class="py-3 px-3 text-slate-600">Kamis, 10:00 - 12:30<br><span class="text-[11px] text-slate-400">(Lab Basis Data)</span></td>
+                <td class="py-3 px-3 text-slate-700">Tri Astoto Kurniawan, S.T., Ph.D.</td>
+              </tr>
+              <tr>
+                <td class="py-3 px-3 text-center text-slate-500">6</td>
+                <td class="py-3 px-3 font-bold text-[#2042B8]">CIF61011</td>
+                <td class="py-3 px-3 font-semibold text-slate-800">Tata Kelola TI (IT Governance)</td>
+                <td class="py-3 px-3 text-center font-bold">3</td>
+                <td class="py-3 px-3 text-center"><span class="bg-[#F2EFE6] px-2 py-0.5 rounded font-semibold">SI-A</span></td>
+                <td class="py-3 px-3 text-slate-600">Kamis, 13:30 - 16:00<br><span class="text-[11px] text-slate-400">(Gedung F.204)</span></td>
+                <td class="py-3 px-3 text-slate-700">Retno Indah Rokhmawati, S.Pd., M.Pd.</td>
+              </tr>
+              <tr>
+                <td class="py-3 px-3 text-center text-slate-500">7</td>
+                <td class="py-3 px-3 font-bold text-[#2042B8]">UNG60002</td>
+                <td class="py-3 px-3 font-semibold text-slate-800">Kewirausahaan Digital</td>
+                <td class="py-3 px-3 text-center font-bold">3</td>
+                <td class="py-3 px-3 text-center"><span class="bg-[#F2EFE6] px-2 py-0.5 rounded font-semibold">SI-E</span></td>
+                <td class="py-3 px-3 text-slate-600">Jumat, 08:00 - 10:30<br><span class="text-[11px] text-slate-400">(Gedung H.101)</span></td>
+                <td class="py-3 px-3 text-slate-700">Dr. Widhy Hayuhardhika N. P., S.Kom., M.Kom.</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- Total Bar -->
+          <div class="bg-[#EFECE1] px-4 py-3 flex items-center justify-between text-xs font-bold mt-2 rounded-lg">
+            <span class="text-slate-800">Total Beban Studi yang Disetujui</span>
+            <span class="text-[#2042B8]">21 SKS <span class="font-normal text-slate-500">(Dari batas maksimum 24 SKS)</span></span>
+          </div>
+        </div>
+
+        <!-- Validasi Elektronik & Tanda Tangan -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 border-t border-slate-100">
+          <!-- Kiri: Validasi -->
+          <div class="bg-[#FAF9F5] border border-slate-200/70 rounded-xl p-5 space-y-3">
+            <span class="bg-emerald-50 text-emerald-700 text-[10px] font-bold px-2.5 py-1 rounded-full inline-flex items-center gap-1">
+              <i data-lucide="shield-check" class="w-3 h-3"></i> DISETUJUI SECARA ELEKTRONIK
+            </span>
+            <p class="text-[11px] text-slate-500 leading-relaxed">
+              Dokumen ini sah dan diterbitkan secara digital oleh SIAM Universitas Brawijaya. Tanda tangan fisik tidak lagi diperlukan berdasarkan Peraturan Rektor UB No. 12 Tahun 2023.
+            </p>
+            <div class="flex items-center gap-3 pt-2">
+              <div class="w-12 h-12 bg-slate-900 rounded-lg flex items-center justify-center text-white shrink-0">
+                <i data-lucide="qr-code" class="w-8 h-8"></i>
+              </div>
+              <div class="text-[10px] leading-snug">
+                <p class="font-bold text-slate-600 uppercase">Tautan Validasi Keaslian:</p>
+                <p class="text-[#2042B8] font-medium break-all">siam.ub.ac.id/verify/krs-255150407111067</p>
+                <p class="text-slate-400 mt-0.5">• Kode Hash: SHA256-UB-8FA91C2D</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Kanan: TTD Dosen PA & Mahasiswa -->
+          <div class="text-right text-xs flex flex-col justify-between">
+            <div>
+              <p class="text-slate-500">Malang, 18 Februari 2026</p>
+              <p class="font-semibold text-slate-700">Dosen Pembimbing Akademik (PA)</p>
+
+              <div class="inline-flex items-center gap-2.5 bg-blue-50/70 border border-blue-200 rounded-lg px-3.5 py-2 my-3 text-left">
+                <i data-lucide="signature" class="w-5 h-5 text-[#2042B8]"></i>
+                <div>
+                  <p class="text-[9px] font-bold text-[#2042B8] uppercase">Ditandatangani Digital</p>
+                  <p class="text-[11px] font-bold text-slate-800">Lia Ninda Safitri, S.Kom., M.T.</p>
+                  <p class="text-[9px] text-slate-500">Timestamp: 2026-02-18 14:20:18 WIB</p>
+                </div>
+              </div>
+
+              <p class="font-bold text-slate-900">Lia Ninda Safitri, S.Kom., M.T.</p>
+              <p class="text-[11px] text-slate-500">NIP. 198804152014042001</p>
+            </div>
+
+            <div class="mt-4 pt-3 border-t border-slate-100">
+              <p class="text-[11px] text-slate-500">Mahasiswa yang bersangkutan:</p>
+              <p class="font-bold text-slate-900">Arya Putra Rahman Dhika</p>
+              <p class="text-[11px] text-slate-500">NIM: 255150407111067</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer Dokumen -->
+        <div class="mt-8 pt-4 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-400">
+          <span class="flex items-center gap-1.5"><i data-lucide="lock" class="w-3 h-3"></i> Sistem Informasi Akademik Mahasiswa (SIAM) • Universitas Brawijaya</span>
+          <span>Dicetak pada tanggal: 24 Februari 2026</span>
+        </div>
+      </article>
+
+    </main>
+  </div>
+
+  <script>lucide.createIcons();</script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-client.js"></script>
+  <script src="js/auth-guard.js"></script>
+</body>
+</html>
