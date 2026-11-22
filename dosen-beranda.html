@@ -112,31 +112,21 @@
         <!-- Pengajuan Terbaru -->
         <div class="bg-white rounded-2xl border border-slate-200/70 p-6 shadow-sm space-y-4">
           <h3 class="text-sm font-bold text-slate-900">Pengajuan Terbaru</h3>
-
-          <a href="dosen-persetujuan-krs.html" class="flex items-center justify-between gap-4 p-3.5 rounded-xl hover:bg-slate-50 border border-transparent hover:border-slate-200/70 transition">
-            <div class="flex items-center gap-3.5">
-              <div class="w-10 h-10 rounded-full bg-blue-50 text-[#2042B8] text-xs font-bold flex items-center justify-center shrink-0">AR</div>
-              <div>
-                <p class="text-xs font-bold text-slate-900">Arya Putra Rahman Dhika</p>
-                <p class="text-[11px] text-slate-500 mt-0.5">21 SKS • Diajukan 20 Okt 2026, 09:42 WIB</p>
-              </div>
-            </div>
-            <span class="bg-amber-50 text-amber-700 text-[11px] font-bold px-3.5 py-1.5 rounded-full shrink-0">
-              Menunggu Tinjauan
-            </span>
-          </a>
+          <div id="listPengajuanTerbaru" class="space-y-2">
+            <p class="text-xs text-slate-400 py-4 text-center">Memuat pengajuan terbaru...</p>
+          </div>
         </div>
 
         <!-- Ringkasan Semester -->
         <div class="bg-white rounded-2xl border border-slate-200/70 p-6 shadow-sm flex flex-col justify-between space-y-5">
           <div>
             <h3 class="text-sm font-bold text-slate-900">Ringkasan Semester</h3>
-            <p class="text-sm font-bold text-slate-800 mt-4">Semester Ganjil 2026/2027</p>
-            <p class="text-xs text-slate-500 mt-1">78% mahasiswa bimbingan telah menyelesaikan proses KRS.</p>
+            <p id="dosenRingkasanSemester" class="text-sm font-bold text-slate-800 mt-4">Memuat semester...</p>
+            <p id="dosenRingkasanProgres" class="text-xs text-slate-500 mt-1">Menghitung progres persetujuan KRS...</p>
           </div>
 
           <div class="w-full bg-slate-100 rounded-full h-2.5 overflow-hidden">
-            <div class="bg-[#2042B8] h-2.5 rounded-full" style="width: 78%;"></div>
+            <div id="dosenProgressBar" class="bg-[#2042B8] h-2.5 rounded-full transition-all" style="width: 0%;"></div>
           </div>
         </div>
       </section>
@@ -148,5 +138,6 @@
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="js/supabase-client.js"></script>
   <script src="js/auth-guard.js"></script>
+  <script src="js/dosen-krs.js"></script>
 </body>
 </html>

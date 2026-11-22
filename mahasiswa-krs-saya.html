@@ -89,29 +89,34 @@
     <!-- Content Body -->
     <main class="p-8 space-y-6 max-w-6xl w-full">
 
+      <!-- Feedback Alert -->
+      <div id="alertKrsSaya" class="hidden rounded-xl border px-5 py-3.5 text-xs font-semibold">
+        <span id="alertKrsSayaText"></span>
+      </div>
+
       <!-- Info Mahasiswa Bar -->
       <section class="bg-[#EFECE1] border border-slate-200/80 rounded-2xl px-6 py-4 flex flex-wrap items-center justify-between gap-4">
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 flex-1">
           <div>
             <p class="text-[10px] font-bold tracking-wider text-slate-500 uppercase">Nama Mahasiswa</p>
-            <p class="text-xs font-bold text-slate-900 mt-0.5">Rohmi Rizqulloh Putra</p>
+            <p id="krsSayaNama" class="text-xs font-bold text-slate-900 mt-0.5">-</p>
           </div>
           <div>
             <p class="text-[10px] font-bold tracking-wider text-slate-500 uppercase">NIM</p>
-            <p class="text-xs font-bold text-slate-900 mt-0.5">255150400111055</p>
+            <p id="krsSayaNim" class="text-xs font-bold text-slate-900 mt-0.5">-</p>
           </div>
           <div>
             <p class="text-[10px] font-bold tracking-wider text-slate-500 uppercase">Program Studi</p>
-            <p class="text-xs font-bold text-slate-900 mt-0.5">Sistem Informasi</p>
+            <p id="krsSayaProdi" class="text-xs font-bold text-slate-900 mt-0.5">S1 Sistem Informasi</p>
           </div>
           <div>
             <p class="text-[10px] font-bold tracking-wider text-slate-500 uppercase">Semester Akademik</p>
-            <p class="text-xs font-bold text-slate-900 mt-0.5">Ganjil 2026/2027</p>
+            <p id="krsSayaSemester" class="text-xs font-bold text-slate-900 mt-0.5">-</p>
           </div>
         </div>
 
         <span id="badgeStatusKrsSaya" class="bg-blue-50 text-[#2042B8] border border-blue-200 text-xs font-bold px-3.5 py-1.5 rounded-full inline-flex items-center gap-1.5 shrink-0">
-          <span class="w-1.5 h-1.5 rounded-full bg-[#2042B8]"></span> KRS Sementara
+          <span class="w-1.5 h-1.5 rounded-full bg-[#2042B8]"></span> Memuat...
         </span>
       </section>
 
@@ -119,7 +124,7 @@
       <section class="bg-white rounded-2xl border border-slate-200/70 shadow-sm overflow-hidden">
         <div class="bg-[#2042B8] px-6 py-4 flex items-center justify-between text-white">
           <h3 class="text-sm font-bold">Daftar Mata Kuliah Terpilih</h3>
-          <span class="bg-white/15 text-white text-xs font-semibold px-3.5 py-1 rounded-full">4 Mata Kuliah</span>
+          <span id="krsSayaCountBadge" class="bg-white/15 text-white text-xs font-semibold px-3.5 py-1 rounded-full">0 Mata Kuliah</span>
         </div>
 
         <div class="overflow-x-auto">
@@ -136,71 +141,7 @@
             </thead>
             <tbody id="tbodyKrsSaya" class="divide-y divide-slate-100">
               <tr>
-                <td class="py-4 px-6 font-medium text-slate-500">1</td>
-                <td class="py-4 px-4"><span class="bg-slate-100 text-[#2042B8] font-bold px-2.5 py-1 rounded-md">SIF4101</span></td>
-                <td class="py-4 px-4">
-                  <p class="font-bold text-slate-800">Analisis dan Desain Sistem Informasi</p>
-                  <p class="text-[11px] text-slate-500 mt-0.5">Dosen: Dr. Eng. Herman Tolle, S.T., M.T.</p>
-                </td>
-                <td class="py-4 px-4 text-center font-bold">4</td>
-                <td class="py-4 px-4 text-center"><span class="bg-[#F2EFE6] font-semibold px-2.5 py-1 rounded-md">SI-A</span></td>
-                <td class="py-4 px-6 text-slate-600">
-                  <div class="flex items-center gap-1.5">
-                    <i data-lucide="clock" class="w-3.5 h-3.5 text-slate-400 shrink-0"></i>
-                    <span>Senin, 07:30 - 10:50 (Gedung G - 2.1)</span>
-                  </div>
-                </td>
-              </tr>
-
-              <tr>
-                <td class="py-4 px-6 font-medium text-slate-500">2</td>
-                <td class="py-4 px-4"><span class="bg-slate-100 text-[#2042B8] font-bold px-2.5 py-1 rounded-md">SIF4103</span></td>
-                <td class="py-4 px-4">
-                  <p class="font-bold text-slate-800">Basis Data Lanjut</p>
-                  <p class="text-[11px] text-slate-500 mt-0.5">Dosen: Tri Astoto Kurniawan, S.T., M.T., Ph.D.</p>
-                </td>
-                <td class="py-4 px-4 text-center font-bold">4</td>
-                <td class="py-4 px-4 text-center"><span class="bg-[#F2EFE6] font-semibold px-2.5 py-1 rounded-md">SI-B</span></td>
-                <td class="py-4 px-6 text-slate-600">
-                  <div class="flex items-center gap-1.5">
-                    <i data-lucide="clock" class="w-3.5 h-3.5 text-slate-400 shrink-0"></i>
-                    <span>Selasa, 10:00 - 13:20 (Lab. Basis Data)</span>
-                  </div>
-                </td>
-              </tr>
-
-              <tr>
-                <td class="py-4 px-6 font-medium text-slate-500">3</td>
-                <td class="py-4 px-4"><span class="bg-slate-100 text-[#2042B8] font-bold px-2.5 py-1 rounded-md">SIF4105</span></td>
-                <td class="py-4 px-4">
-                  <p class="font-bold text-slate-800">Pemrograman Berorientasi Objek</p>
-                  <p class="text-[11px] text-slate-500 mt-0.5">Dosen: Issa Arwani, S.Kom., M.T.</p>
-                </td>
-                <td class="py-4 px-4 text-center font-bold">3</td>
-                <td class="py-4 px-4 text-center"><span class="bg-[#F2EFE6] font-semibold px-2.5 py-1 rounded-md">SI-A</span></td>
-                <td class="py-4 px-6 text-slate-600">
-                  <div class="flex items-center gap-1.5">
-                    <i data-lucide="clock" class="w-3.5 h-3.5 text-slate-400 shrink-0"></i>
-                    <span>Rabu, 07:30 - 10:00 (Gedung F - 3.4)</span>
-                  </div>
-                </td>
-              </tr>
-
-              <tr>
-                <td class="py-4 px-6 font-medium text-slate-500">4</td>
-                <td class="py-4 px-4"><span class="bg-slate-100 text-[#2042B8] font-bold px-2.5 py-1 rounded-md">SIF4108</span></td>
-                <td class="py-4 px-4">
-                  <p class="font-bold text-slate-800">Arsitektur Enterprise</p>
-                  <p class="text-[11px] text-slate-500 mt-0.5">Dosen: Suprapto, S.T., M.T.</p>
-                </td>
-                <td class="py-4 px-4 text-center font-bold">3</td>
-                <td class="py-4 px-4 text-center"><span class="bg-[#F2EFE6] font-semibold px-2.5 py-1 rounded-md">SI-C</span></td>
-                <td class="py-4 px-6 text-slate-600">
-                  <div class="flex items-center gap-1.5">
-                    <i data-lucide="clock" class="w-3.5 h-3.5 text-slate-400 shrink-0"></i>
-                    <span>Kamis, 13:00 - 15:30 (Gedung A - 1.2)</span>
-                  </div>
-                </td>
+                <td colspan="6" class="py-8 px-6 text-center text-slate-400">Memuat daftar mata kuliah terpilih...</td>
               </tr>
             </tbody>
           </table>
@@ -209,22 +150,22 @@
         <!-- Footer Action Bar -->
         <div class="px-6 py-4 bg-[#FAF9F5] border-t border-slate-100 flex flex-wrap items-center justify-between gap-4">
           <div class="bg-white border border-slate-200 px-4 py-2 rounded-full text-xs">
-            Total Beban Studi: <strong class="text-[#2042B8]">14 SKS</strong> <span class="text-slate-400">(Maksimal 24 SKS)</span>
+            Total Beban Studi: <strong id="krsSayaTotalSks" class="text-[#2042B8]">0 SKS</strong> <span id="krsSayaMaxSks" class="text-slate-400">(Maksimal 24 SKS)</span>
           </div>
 
-          <!-- State 1: Belum Diajukan -->
+          <!-- State 1: Belum Diajukan / Perlu Revisi -->
           <div id="actionDraft" class="flex items-center gap-3">
             <a href="mahasiswa-pengisian-krs.html" class="bg-amber-400 hover:bg-amber-500 text-slate-900 text-xs font-bold px-5 py-2.5 rounded-full inline-flex items-center gap-1.5 transition">
               <i data-lucide="pencil" class="w-3.5 h-3.5"></i> Ubah KRS
             </a>
-            <button type="button" onclick="openModal()" class="bg-[#2042B8] hover:bg-blue-800 text-white text-xs font-semibold px-5 py-2.5 rounded-full inline-flex items-center gap-1.5 transition">
+            <button type="button" id="btnAjukanKrs" class="bg-[#2042B8] hover:bg-blue-800 text-white text-xs font-semibold px-5 py-2.5 rounded-full inline-flex items-center gap-1.5 transition">
               <i data-lucide="send" class="w-3.5 h-3.5"></i> Ajukan KRS
             </button>
           </div>
 
-          <!-- State 2: Sudah Diajukan (Menunggu Persetujuan) -->
+          <!-- State 2: Sudah Diajukan (Menunggu Persetujuan / Disetujui) -->
           <div id="actionSubmitted" class="hidden">
-            <span class="bg-amber-50 text-amber-700 border border-amber-200 text-xs font-bold px-5 py-2.5 rounded-full inline-block">
+            <span id="actionSubmittedBadge" class="bg-amber-50 text-amber-700 border border-amber-200 text-xs font-bold px-5 py-2.5 rounded-full inline-block">
               Menunggu Persetujuan
             </span>
           </div>
@@ -243,8 +184,8 @@
 
       <div>
         <h3 class="text-lg font-bold text-slate-900">Konfirmasi Pengajuan KRS</h3>
-        <p class="text-xs text-slate-500 mt-1.5 leading-relaxed">
-          Apakah Anda yakin ingin mengajukan KRS (14 SKS) kepada Dosen PA? Data tidak dapat diubah selama menunggu persetujuan.
+        <p id="modalKonfirmasiDesc" class="text-xs text-slate-500 mt-1.5 leading-relaxed">
+          Apakah Anda yakin ingin mengajukan KRS kepada Dosen PA? Data tidak dapat diubah selama menunggu persetujuan.
         </p>
       </div>
 
@@ -254,37 +195,20 @@
       </div>
 
       <div class="flex items-center justify-end gap-2.5 pt-2">
-        <button type="button" onclick="closeModal()" class="px-5 py-2.5 rounded-full border border-slate-300 text-xs font-semibold text-slate-700 hover:bg-slate-50 transition">
+        <button type="button" id="btnBatalAjukan" class="px-5 py-2.5 rounded-full border border-slate-300 text-xs font-semibold text-slate-700 hover:bg-slate-50 transition">
           Batal
         </button>
-        <button type="button" onclick="submitKrs()" class="px-5 py-2.5 rounded-full bg-[#2042B8] hover:bg-blue-800 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition">
+        <button type="button" id="btnKonfirmasiAjukan" class="px-5 py-2.5 rounded-full bg-[#2042B8] hover:bg-blue-800 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition">
           <i data-lucide="check" class="w-3.5 h-3.5"></i> Ya, Ajukan
         </button>
       </div>
     </div>
   </div>
 
-  <script>
-    lucide.createIcons();
-
-    const modal = document.getElementById('modalKonfirmasi');
-    function openModal() {
-      modal.classList.remove('hidden');
-      modal.classList.add('flex');
-    }
-    function closeModal() {
-      modal.classList.add('hidden');
-      modal.classList.remove('flex');
-    }
-    function submitKrs() {
-      closeModal();
-      document.getElementById('actionDraft').classList.add('hidden');
-      document.getElementById('actionSubmitted').classList.remove('hidden');
-      document.getElementById('badgeStatusKrsSaya').innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-[#2042B8]"></span> KRS Diajukan';
-    }
-  </script>
+  <script>lucide.createIcons();</script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="js/supabase-client.js"></script>
   <script src="js/auth-guard.js"></script>
+  <script src="js/mahasiswa-krs.js"></script>
 </body>
 </html>

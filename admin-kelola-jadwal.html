@@ -45,7 +45,7 @@
       <a href="index.html" data-logout="true" class="flex items-center gap-3 px-4 py-2.5 rounded-full text-sm text-blue-100 hover:bg-white/10 transition">
         <i data-lucide="log-out" class="w-4 h-4"></i> Keluar Sistem
       </a>
-      <p class="px-4 text-[10px] text-blue-200/70">Tahun Ajaran 2024/2025 - Ganjil</p>
+      <p id="jadwalSidebarPeriode" class="px-4 text-[10px] text-blue-200/70">Tahun Ajaran 2026/2027</p>
     </div>
   </aside>
 
@@ -71,10 +71,10 @@
 
       <!-- Breadcrumb & Context Pills -->
       <div class="flex flex-wrap items-center justify-between gap-3 text-xs">
-        <p class="text-slate-500">Manajemen Akademik <span class="mx-1">›</span> <strong class="text-slate-800">Kelola Data Mata Kuliah & Jadwal</strong></p>
+        <p class="text-slate-500">Manajemen Akademik <span class="mx-1">›</span> <strong class="text-slate-800">Kelola Data Mata Kuliah &amp; Jadwal</strong></p>
         <div class="flex items-center gap-2">
           <span class="bg-white border border-slate-200 px-3 py-1 rounded-full text-[11px] font-bold text-slate-700 flex items-center gap-1.5">
-            <span class="w-2 h-2 rounded-full bg-amber-400"></span> SEMESTER GANJIL 2024/2025
+            <span class="w-2 h-2 rounded-full bg-amber-400"></span> <span id="jadwalPeriodePill">SEMESTER AKTIF</span>
           </span>
           <span class="bg-blue-50 text-[#2042B8] px-3 py-1 rounded-full text-[11px] font-bold">Jurusan Sistem Informasi</span>
         </div>
@@ -85,7 +85,7 @@
         <div class="bg-white rounded-2xl p-5 border border-slate-200/70 shadow-sm flex items-center justify-between">
           <div>
             <p class="text-[10px] font-bold tracking-wider text-slate-400 uppercase">Total Jadwal Aktif</p>
-            <p class="text-xl font-extrabold text-slate-900 mt-1">32 Kelas</p>
+            <p id="jadwalStatTotalKelas" class="text-xl font-extrabold text-slate-900 mt-1">0 Kelas</p>
           </div>
           <div class="w-10 h-10 rounded-xl bg-blue-50 text-[#2042B8] flex items-center justify-center">
             <i data-lucide="calendar-check" class="w-5 h-5"></i>
@@ -95,7 +95,7 @@
         <div class="bg-white rounded-2xl p-5 border border-slate-200/70 shadow-sm flex items-center justify-between">
           <div>
             <p class="text-[10px] font-bold tracking-wider text-slate-400 uppercase">Total Beban SKS</p>
-            <p class="text-xl font-extrabold text-slate-900 mt-1">108 SKS</p>
+            <p id="jadwalStatTotalSks" class="text-xl font-extrabold text-slate-900 mt-1">0 SKS</p>
           </div>
           <div class="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center">
             <i data-lucide="book-open" class="w-5 h-5"></i>
@@ -105,7 +105,7 @@
         <div class="bg-white rounded-2xl p-5 border border-slate-200/70 shadow-sm flex items-center justify-between">
           <div>
             <p class="text-[10px] font-bold tracking-wider text-slate-400 uppercase">Dosen Bertugas</p>
-            <p class="text-xl font-extrabold text-slate-900 mt-1">24 Dosen</p>
+            <p id="jadwalStatDosenCount" class="text-xl font-extrabold text-slate-900 mt-1">0 Dosen</p>
           </div>
           <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center">
             <i data-lucide="users" class="w-5 h-5"></i>
@@ -115,7 +115,7 @@
         <div class="bg-white rounded-2xl p-5 border border-slate-200/70 shadow-sm flex items-center justify-between">
           <div>
             <p class="text-[10px] font-bold tracking-wider text-slate-400 uppercase">Status Konflik</p>
-            <p class="text-xl font-extrabold text-red-600 mt-1">1 Terdeteksi</p>
+            <p id="jadwalStatKonflik" class="text-xl font-extrabold text-red-600 mt-1">Aman (0)</p>
           </div>
           <div class="w-10 h-10 rounded-xl bg-red-50 text-red-600 flex items-center justify-center">
             <i data-lucide="alert-triangle" class="w-5 h-5"></i>
@@ -127,24 +127,30 @@
       <section class="bg-white rounded-2xl border border-slate-200/70 shadow-sm overflow-hidden">
         <div class="p-6 flex flex-wrap items-center justify-between gap-4 border-b border-slate-100">
           <div>
-            <h3 class="text-base font-bold text-slate-900">Daftar Mata Kuliah & Jadwal</h3>
+            <h3 class="text-base font-bold text-slate-900">Daftar Mata Kuliah &amp; Jadwal</h3>
             <p class="text-xs text-slate-500 mt-0.5">Kelola informasi jadwal perkuliahan, alokasi ruang sidang dan lab semester berjalan.</p>
           </div>
 
           <div class="flex flex-wrap items-center gap-2.5">
             <div class="relative">
               <i data-lucide="search" class="w-3.5 h-3.5 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2"></i>
-              <input type="text" placeholder="Cari kode, nama MK, dosen..."
+              <input type="text" id="searchJadwalAdmin" placeholder="Cari kode, nama MK, dosen..."
                 class="bg-slate-50 border border-slate-200 rounded-full pl-9 pr-4 py-2 text-xs focus:outline-none focus:border-[#2042B8]" />
             </div>
-            <select class="bg-white border border-slate-200 rounded-full px-4 py-2 text-xs font-semibold text-slate-700 focus:outline-none">
-              <option>Semester 5</option>
-              <option>Semester 3</option>
-              <option>Semester 1</option>
+            <select id="filterSemesterAdmin" class="bg-white border border-slate-200 rounded-full px-4 py-2 text-xs font-semibold text-slate-700 focus:outline-none">
+              <option value="ALL" selected>Semua Semester</option>
+              <option value="1">Semester 1</option>
+              <option value="2">Semester 2</option>
+              <option value="3">Semester 3</option>
+              <option value="4">Semester 4</option>
+              <option value="5">Semester 5</option>
+              <option value="6">Semester 6</option>
+              <option value="7">Semester 7</option>
+              <option value="8">Semester 8</option>
             </select>
-            <button onclick="document.getElementById('formJadwalSection').scrollIntoView({behavior:'smooth'})"
+            <button type="button" id="btnTambahJadwal"
               class="bg-[#2042B8] hover:bg-blue-800 text-white text-xs font-semibold px-4 py-2 rounded-full inline-flex items-center gap-1.5 transition">
-              <i data-lucide="plus" class="w-3.5 h-3.5"></i> Tambah Mata Kuliah & Jadwal
+              <i data-lucide="plus" class="w-3.5 h-3.5"></i> Tambah Mata Kuliah &amp; Jadwal
             </button>
           </div>
         </div>
@@ -158,102 +164,25 @@
                 <th class="py-3.5 px-3 text-center">SKS</th>
                 <th class="py-3.5 px-3 text-center">Sem</th>
                 <th class="py-3.5 px-3 text-center">Kelas</th>
-                <th class="py-3.5 px-4">Hari & Jam</th>
+                <th class="py-3.5 px-4">Hari &amp; Jam</th>
                 <th class="py-3.5 px-3 text-center">Ruangan</th>
                 <th class="py-3.5 px-4">Dosen Pengampu</th>
-                <th class="py-3.5 px-5 text-right">Kuota</th>
+                <th class="py-3.5 px-3 text-center">Terisi/Kuota</th>
+                <th class="py-3.5 px-5 text-right">Aksi</th>
               </tr>
             </thead>
             <tbody id="tbodyJadwalAdmin" class="divide-y divide-slate-100">
-              <tr class="hover:bg-slate-50">
-                <td class="py-4 px-5 font-bold text-[#2042B8]">SI2201</td>
-                <td class="py-4 px-4">
-                  <p class="font-bold text-slate-900">Rekayasa Sistem Informasi</p>
-                  <p class="text-[11px] text-slate-400">Kurikulum 2020 • Wajib Program Studi</p>
-                </td>
-                <td class="py-4 px-3 text-center font-bold">3</td>
-                <td class="py-4 px-3 text-center">5</td>
-                <td class="py-4 px-3 text-center"><span class="bg-[#F2EFE6] px-2 py-0.5 rounded font-semibold">SI-A</span></td>
-                <td class="py-4 px-4"><p class="font-bold text-slate-800">Selasa</p><p class="text-[11px] text-slate-500">08:00 - 10:30 WIB</p></td>
-                <td class="py-4 px-3 text-center"><span class="bg-red-50 text-red-600 font-bold px-2.5 py-1 rounded-full">⚠ F2.1</span></td>
-                <td class="py-4 px-4"><p class="font-semibold text-slate-800">Dr. Lia Ninda Safitri, M.Kom</p><p class="text-[10px] text-slate-400">NIP. 198504122010122001</p></td>
-                <td class="py-4 px-5 text-right"><span class="bg-emerald-50 text-emerald-700 font-bold px-2.5 py-1 rounded-full">40 Mhs</span></td>
-              </tr>
-
-              <tr class="hover:bg-slate-50">
-                <td class="py-4 px-5 font-bold text-[#2042B8]">SI2202</td>
-                <td class="py-4 px-4">
-                  <p class="font-bold text-slate-900">Basis Data Lanjut</p>
-                  <p class="text-[11px] text-slate-400">Kurikulum 2020 • Wajib Peminatan</p>
-                </td>
-                <td class="py-4 px-3 text-center font-bold">4</td>
-                <td class="py-4 px-3 text-center">3</td>
-                <td class="py-4 px-3 text-center"><span class="bg-[#F2EFE6] px-2 py-0.5 rounded font-semibold">SI-A</span></td>
-                <td class="py-4 px-4"><p class="font-bold text-slate-800">Senin</p><p class="text-[11px] text-slate-500">10:00 - 12:30 WIB</p></td>
-                <td class="py-4 px-3 text-center"><span class="bg-slate-100 text-slate-700 font-semibold px-2.5 py-1 rounded-full">Lab Komputasi</span></td>
-                <td class="py-4 px-4"><p class="font-semibold text-slate-800">Ahmad Fauzi, S.Kom., M.T.</p><p class="text-[10px] text-slate-400">NIP. 198809202015041002</p></td>
-                <td class="py-4 px-5 text-right"><span class="bg-emerald-50 text-emerald-700 font-bold px-2.5 py-1 rounded-full">40 Mhs</span></td>
-              </tr>
-
-              <tr class="hover:bg-slate-50">
-                <td class="py-4 px-5 font-bold text-[#2042B8]">SI2203</td>
-                <td class="py-4 px-4">
-                  <p class="font-bold text-slate-900">Pemrograman Berorientasi Objek</p>
-                  <p class="text-[11px] text-slate-400">Kurikulum 2020 • Wajib Inti Keilmuan</p>
-                </td>
-                <td class="py-4 px-3 text-center font-bold">3</td>
-                <td class="py-4 px-3 text-center">3</td>
-                <td class="py-4 px-3 text-center"><span class="bg-[#F2EFE6] px-2 py-0.5 rounded font-semibold">SI-C</span></td>
-                <td class="py-4 px-4"><p class="font-bold text-slate-800">Rabu</p><p class="text-[11px] text-slate-500">13:00 - 15:30 WIB</p></td>
-                <td class="py-4 px-3 text-center"><span class="bg-slate-100 text-slate-700 font-semibold px-2.5 py-1 rounded-full">F1.4</span></td>
-                <td class="py-4 px-4"><p class="font-semibold text-slate-800">Ir. Bambang Hermanto</p><p class="text-[10px] text-slate-400">NIP. 197405101999031001</p></td>
-                <td class="py-4 px-5 text-right"><span class="bg-emerald-50 text-emerald-700 font-bold px-2.5 py-1 rounded-full">40 Mhs</span></td>
-              </tr>
-
-              <tr class="hover:bg-slate-50">
-                <td class="py-4 px-5 font-bold text-[#2042B8]">SI2204</td>
-                <td class="py-4 px-4">
-                  <p class="font-bold text-slate-900">Algoritma dan Struktur Data</p>
-                  <p class="text-[11px] text-slate-400">Kurikulum 2020 • Tingkat Dasar</p>
-                </td>
-                <td class="py-4 px-3 text-center font-bold">4</td>
-                <td class="py-4 px-3 text-center">1</td>
-                <td class="py-4 px-3 text-center"><span class="bg-[#F2EFE6] px-2 py-0.5 rounded font-semibold">SI-A</span></td>
-                <td class="py-4 px-4"><p class="font-bold text-slate-800">Kamis</p><p class="text-[11px] text-slate-500">07:30 - 10:00 WIB</p></td>
-                <td class="py-4 px-3 text-center"><span class="bg-slate-100 text-slate-700 font-semibold px-2.5 py-1 rounded-full">F2.2</span></td>
-                <td class="py-4 px-4"><p class="font-semibold text-slate-800">Rina Wijayanti, Ph.D.</p><p class="text-[10px] text-slate-400">NIP. 198902142018032001</p></td>
-                <td class="py-4 px-5 text-right"><span class="bg-amber-50 text-amber-700 font-bold px-2.5 py-1 rounded-full">35 Mhs</span></td>
-              </tr>
-
-              <tr class="hover:bg-slate-50">
-                <td class="py-4 px-5 font-bold text-[#2042B8]">SI2205</td>
-                <td class="py-4 px-4">
-                  <p class="font-bold text-slate-900">Desain Antarmuka Pengguna</p>
-                  <p class="text-[11px] text-slate-400">Kurikulum 2020 • Desain & Interaksi</p>
-                </td>
-                <td class="py-4 px-3 text-center font-bold">3</td>
-                <td class="py-4 px-3 text-center">5</td>
-                <td class="py-4 px-3 text-center"><span class="bg-[#F2EFE6] px-2 py-0.5 rounded font-semibold">SI-A</span></td>
-                <td class="py-4 px-4"><p class="font-bold text-slate-800">Jumat</p><p class="text-[11px] text-slate-500">08:30 - 11:00 WIB</p></td>
-                <td class="py-4 px-3 text-center"><span class="bg-slate-100 text-slate-700 font-semibold px-2.5 py-1 rounded-full">Studio Desain</span></td>
-                <td class="py-4 px-4"><p class="font-semibold text-slate-800">M. Rizky Pratama, M.Ds</p><p class="text-[10px] text-slate-400">NIP. 199106252019011001</p></td>
-                <td class="py-4 px-5 text-right"><span class="bg-emerald-50 text-emerald-700 font-bold px-2.5 py-1 rounded-full">40 Mhs</span></td>
+              <tr>
+                <td colspan="10" class="py-8 px-5 text-center text-slate-400">Memuat data mata kuliah &amp; jadwal...</td>
               </tr>
             </tbody>
           </table>
         </div>
 
-        <!-- Pagination -->
+        <!-- Pagination Info -->
         <div class="px-6 py-3.5 bg-[#FAF9F5] border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
-          <span>Menampilkan <strong>1–5</strong> dari <strong>32</strong> mata kuliah</span>
-          <div class="flex items-center gap-1">
-            <button class="w-7 h-7 rounded-full border border-slate-200 flex items-center justify-center hover:bg-slate-100">‹</button>
-            <button class="w-7 h-7 rounded-full bg-[#2042B8] text-white font-bold flex items-center justify-center">1</button>
-            <button class="w-7 h-7 rounded-full hover:bg-slate-100 flex items-center justify-center">2</button>
-            <button class="w-7 h-7 rounded-full hover:bg-slate-100 flex items-center justify-center">3</button>
-            <button class="w-7 h-7 rounded-full hover:bg-slate-100 flex items-center justify-center">4</button>
-            <button class="w-7 h-7 rounded-full border border-slate-200 flex items-center justify-center hover:bg-slate-100">›</button>
-          </div>
+          <span id="jadwalPaginationInfo">Memuat jadwal...</span>
+          <span class="font-medium">Real-time Supabase</span>
         </div>
       </section>
 
@@ -263,26 +192,26 @@
         <div class="bg-[#2042B8] px-6 py-4 flex flex-wrap items-center justify-between gap-3 text-white">
           <div>
             <h3 class="text-sm font-bold flex items-center gap-2">
-              <i data-lucide="file-edit" class="w-4 h-4"></i> Formulir Mata Kuliah & Jadwal Perkuliahan
+              <i data-lucide="file-edit" class="w-4 h-4"></i> Formulir Mata Kuliah &amp; Jadwal Perkuliahan
             </h3>
             <p class="text-[11px] text-blue-100 mt-0.5">Lengkapi informasi mata kuliah dan alokasi jadwal ruang kelas untuk pemutakhiran data KRS.</p>
           </div>
-          <span class="bg-amber-400 text-slate-900 text-[11px] font-extrabold px-3.5 py-1 rounded-full">
-            MODE EDIT: SI2201
+          <span id="badgeModeJadwal" class="bg-emerald-400 text-slate-900 text-[11px] font-extrabold px-3.5 py-1 rounded-full">
+            MODE TAMBAH BARU
           </span>
         </div>
 
         <form id="formKelolaJadwal" class="p-6 space-y-6">
-          <!-- Alert Bentrok -->
-          <div class="bg-red-50 border border-red-200 rounded-xl p-4 flex items-start justify-between gap-3 text-xs text-red-800">
+          <!-- Alert Bentrok / Validasi / Sukses -->
+          <div id="alertJadwalAdmin" class="hidden bg-red-50 border border-red-200 rounded-xl p-4 flex items-start justify-between gap-3 text-xs text-red-800">
             <div class="flex items-start gap-3">
-              <i data-lucide="alert-circle" class="w-4 h-4 text-red-600 shrink-0 mt-0.5"></i>
+              <i data-lucide="alert-circle" class="w-4 h-4 shrink-0 mt-0.5"></i>
               <div>
-                <p class="font-bold">Terjadi bentrok jadwal pada ruangan/dosen yang dipilih!</p>
-                <p class="text-[11px] text-red-700 mt-0.5">Ruang <strong>F2.1</strong> telah dialokasikan untuk mata kuliah <strong>SI2103 - Arsitektur Enterprise (SI-A)</strong> pada hari <strong>Selasa, pukul 08:00 - 10:30 WIB</strong>. Silakan pilih ruangan alternatif atau geser slot waktu.</p>
+                <p id="alertJadwalTitle" class="font-bold"></p>
+                <p id="alertJadwalDesc" class="text-[11px] mt-0.5 opacity-90"></p>
               </div>
             </div>
-            <button type="button" onclick="this.parentElement.remove()" class="text-red-400 hover:text-red-700">✕</button>
+            <button type="button" onclick="document.getElementById('alertJadwalAdmin').classList.add('hidden')" class="opacity-60 hover:opacity-100">✕</button>
           </div>
 
           <!-- 2 Column Inputs -->
@@ -295,46 +224,51 @@
 
               <div>
                 <div class="flex justify-between text-xs mb-1">
-                  <label class="font-bold text-slate-700">Kode Mata Kuliah <span class="text-red-500">*</span></label>
-                  <span class="text-[10px] text-slate-400">Unik per kurikulum</span>
+                  <label for="inputKodeMk" class="font-bold text-slate-700">Kode Mata Kuliah <span class="text-red-500">*</span></label>
+                  <span class="text-[10px] text-slate-400">Contoh: SI2209</span>
                 </div>
-                <input type="text" value="SI2201" class="w-full bg-white border border-slate-200 rounded-lg px-3.5 py-2 text-xs focus:outline-none focus:border-[#2042B8]" />
-                <p class="text-[10px] text-slate-400 mt-1">Format: 2 huruf kapital kode prodi + 4 digit angka semester & urutan</p>
+                <input type="text" id="inputKodeMk" required placeholder="Contoh: SI2209" class="w-full bg-white border border-slate-200 rounded-lg px-3.5 py-2 text-xs focus:outline-none focus:border-[#2042B8]" />
               </div>
 
               <div>
-                <label class="block text-xs font-bold text-slate-700 mb-1">Nama Mata Kuliah <span class="text-red-500">*</span></label>
-                <input type="text" value="Rekayasa Sistem Informasi" class="w-full bg-white border border-slate-200 rounded-lg px-3.5 py-2 text-xs focus:outline-none focus:border-[#2042B8]" />
+                <label for="inputNamaMk" class="block text-xs font-bold text-slate-700 mb-1">Nama Mata Kuliah <span class="text-red-500">*</span></label>
+                <input type="text" id="inputNamaMk" required placeholder="Contoh: Arsitektur Enterprise" class="w-full bg-white border border-slate-200 rounded-lg px-3.5 py-2 text-xs focus:outline-none focus:border-[#2042B8]" />
               </div>
 
               <div class="grid grid-cols-2 gap-4">
                 <div>
-                  <label class="block text-xs font-bold text-slate-700 mb-1">Bobot SKS <span class="text-red-500">*</span></label>
-                  <select class="w-full bg-white border border-slate-200 rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-[#2042B8]">
-                    <option selected>3 SKS</option>
-                    <option>2 SKS</option>
-                    <option>4 SKS</option>
+                  <label for="inputSks" class="block text-xs font-bold text-slate-700 mb-1">Bobot SKS <span class="text-red-500">*</span></label>
+                  <select id="inputSks" class="w-full bg-white border border-slate-200 rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-[#2042B8]">
+                    <option value="2">2 SKS</option>
+                    <option value="3" selected>3 SKS</option>
+                    <option value="4">4 SKS</option>
+                    <option value="6">6 SKS</option>
                   </select>
                 </div>
                 <div>
-                  <label class="block text-xs font-bold text-slate-700 mb-1">Semester Paket <span class="text-red-500">*</span></label>
-                  <select class="w-full bg-white border border-slate-200 rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-[#2042B8]">
-                    <option selected>Semester 5</option>
-                    <option>Semester 3</option>
-                    <option>Semester 1</option>
+                  <label for="inputSemester" class="block text-xs font-bold text-slate-700 mb-1">Semester Paket <span class="text-red-500">*</span></label>
+                  <select id="inputSemester" class="w-full bg-white border border-slate-200 rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-[#2042B8]">
+                    <option value="1">Semester 1</option>
+                    <option value="2">Semester 2</option>
+                    <option value="3">Semester 3</option>
+                    <option value="4">Semester 4</option>
+                    <option value="5" selected>Semester 5</option>
+                    <option value="6">Semester 6</option>
+                    <option value="7">Semester 7</option>
+                    <option value="8">Semester 8</option>
                   </select>
                 </div>
               </div>
 
               <div class="grid grid-cols-2 gap-4">
                 <div>
-                  <label class="block text-xs font-bold text-slate-700 mb-1">Nama Kelas <span class="text-red-500">*</span></label>
-                  <input type="text" value="SI-B" class="w-full bg-white border border-slate-200 rounded-lg px-3.5 py-2 text-xs focus:outline-none focus:border-[#2042B8]" />
+                  <label for="inputNamaKelas" class="block text-xs font-bold text-slate-700 mb-1">Nama Kelas <span class="text-red-500">*</span></label>
+                  <input type="text" id="inputNamaKelas" required placeholder="Contoh: SI-A atau A" class="w-full bg-white border border-slate-200 rounded-lg px-3.5 py-2 text-xs focus:outline-none focus:border-[#2042B8]" />
                 </div>
                 <div>
-                  <label class="block text-xs font-bold text-slate-700 mb-1">Kuota Awal Kelas <span class="text-red-500">*</span></label>
+                  <label for="inputKuotaAwal" class="block text-xs font-bold text-slate-700 mb-1">Kuota Awal Kelas <span class="text-red-500">*</span></label>
                   <div class="relative">
-                    <input type="number" value="40" class="w-full bg-white border border-slate-200 rounded-lg px-3.5 py-2 pr-12 text-xs focus:outline-none focus:border-[#2042B8]" />
+                    <input type="number" id="inputKuotaAwal" value="40" min="1" required class="w-full bg-white border border-slate-200 rounded-lg px-3.5 py-2 pr-12 text-xs focus:outline-none focus:border-[#2042B8]" />
                     <span class="absolute right-3 top-1/2 -translate-y-1/2 text-[11px] text-slate-400">Kursi</span>
                   </div>
                 </div>
@@ -344,50 +278,54 @@
             <!-- Right: Alokasi Waktu, Ruangan & Dosen -->
             <div class="bg-[#FAF9F5] border border-slate-200/70 rounded-xl p-5 space-y-4">
               <h4 class="text-xs font-bold text-slate-900 flex items-center gap-2 pb-2 border-b border-slate-200/70">
-                <i data-lucide="clock" class="w-4 h-4 text-[#2042B8]"></i> Alokasi Waktu, Ruangan & Dosen
+                <i data-lucide="clock" class="w-4 h-4 text-[#2042B8]"></i> Alokasi Waktu, Ruangan &amp; Dosen
               </h4>
 
               <div>
-                <label class="block text-xs font-bold text-slate-700 mb-1">Hari Perkuliahan <span class="text-red-500">*</span></label>
-                <select class="w-full bg-white border border-slate-200 rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-[#2042B8]">
-                  <option>Senin</option>
-                  <option selected>Selasa</option>
-                  <option>Rabu</option>
-                  <option>Kamis</option>
-                  <option>Jumat</option>
+                <label for="inputHari" class="block text-xs font-bold text-slate-700 mb-1">Hari Perkuliahan <span class="text-red-500">*</span></label>
+                <select id="inputHari" class="w-full bg-white border border-slate-200 rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-[#2042B8]">
+                  <option value="Senin">Senin</option>
+                  <option value="Selasa">Selasa</option>
+                  <option value="Rabu">Rabu</option>
+                  <option value="Kamis">Kamis</option>
+                  <option value="Jumat">Jumat</option>
+                  <option value="Sabtu">Sabtu</option>
                 </select>
               </div>
 
               <div class="grid grid-cols-2 gap-4">
                 <div>
-                  <label class="block text-xs font-bold text-slate-700 mb-1">Jam Mulai <span class="text-red-500">*</span></label>
-                  <input type="time" value="08:00" class="w-full bg-white border border-slate-200 rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-[#2042B8]" />
+                  <label for="inputJamMulai" class="block text-xs font-bold text-slate-700 mb-1">Jam Mulai <span class="text-red-500">*</span></label>
+                  <input type="time" id="inputJamMulai" value="08:00" required class="w-full bg-white border border-slate-200 rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-[#2042B8]" />
                 </div>
                 <div>
-                  <label class="block text-xs font-bold text-slate-700 mb-1">Jam Selesai <span class="text-red-500">*</span></label>
-                  <input type="time" value="10:30" class="w-full bg-white border border-slate-200 rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-[#2042B8]" />
+                  <label for="inputJamSelesai" class="block text-xs font-bold text-slate-700 mb-1">Jam Selesai <span class="text-red-500">*</span></label>
+                  <input type="time" id="inputJamSelesai" value="10:30" required class="w-full bg-white border border-slate-200 rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-[#2042B8]" />
                 </div>
               </div>
 
               <div>
-                <div class="flex justify-between text-xs mb-1">
-                  <label class="font-bold text-slate-700">Ruang Kelas <span class="text-red-500">*</span></label>
-                  <span class="text-[11px] font-bold text-red-600">ⓘ Bentrok terdeteksi</span>
-                </div>
-                <select class="w-full bg-red-50/50 border-2 border-red-400 text-red-800 font-semibold rounded-lg px-3 py-2 text-xs focus:outline-none">
-                  <option selected>F2.1 (Gedung F - Lantai 2, Kapasitas 45) - BENTROK ⚠</option>
-                  <option>F2.2 (Gedung F - Lantai 2, Kapasitas 45)</option>
-                  <option>G1.4 (Gedung G - Lantai 1, Kapasitas 50)</option>
-                </select>
-                <p class="text-[10px] text-slate-500 mt-1">Kapasitas ruangan harus mencukupi kuota maksimal mahasiswa yang diatur.</p>
+                <label for="inputRuangan" class="block text-xs font-bold text-slate-700 mb-1">Ruang Kelas <span class="text-red-500">*</span></label>
+                <input type="text" id="inputRuangan" list="daftarRuanganOptions" required placeholder="Contoh: F2.1, F2.2, Lab Komputasi"
+                  class="w-full bg-white border border-slate-200 rounded-lg px-3.5 py-2 text-xs focus:outline-none focus:border-[#2042B8]" />
+                <datalist id="daftarRuanganOptions">
+                  <option value="F2.1"></option>
+                  <option value="F2.2"></option>
+                  <option value="F2.3"></option>
+                  <option value="F3.1"></option>
+                  <option value="F3.2"></option>
+                  <option value="G1.4"></option>
+                  <option value="Lab Komputasi"></option>
+                  <option value="Lab Web 2.1"></option>
+                  <option value="Lab Jaringan"></option>
+                </datalist>
+                <p class="text-[10px] text-slate-500 mt-1">Sistem otomatis mendeteksi bentrok ruangan pada hari &amp; jam yang sama.</p>
               </div>
 
               <div>
-                <label class="block text-xs font-bold text-slate-700 mb-1">Dosen Pengampu Utama <span class="text-red-500">*</span></label>
-                <select class="w-full bg-white border border-slate-200 rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-[#2042B8]">
-                  <option selected>Dr. Lia Ninda Safitri, M.Kom (NIP: 198504122010122001)</option>
-                  <option>Ahmad Fauzi, S.Kom., M.T.</option>
-                  <option>Ir. Bambang Hermanto</option>
+                <label for="inputDosenPengampu" class="block text-xs font-bold text-slate-700 mb-1">Dosen Pengampu Utama <span class="text-red-500">*</span></label>
+                <select id="inputDosenPengampu" required class="w-full bg-white border border-slate-200 rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-[#2042B8]">
+                  <option value="">Memuat daftar dosen...</option>
                 </select>
               </div>
             </div>
@@ -396,14 +334,14 @@
           <!-- Footer Actions -->
           <div class="pt-4 border-t border-slate-100 flex flex-wrap items-center justify-between gap-4">
             <p class="text-xs text-slate-500 flex items-center gap-1.5">
-              <i data-lucide="info" class="w-3.5 h-3.5 text-slate-400"></i> Perubahan jadwal otomatis diperbarui pada portal SIAM mahasiswa & dosen.
+              <i data-lucide="info" class="w-3.5 h-3.5 text-slate-400"></i> Perubahan jadwal otomatis diperbarui pada portal SIAM mahasiswa &amp; dosen.
             </p>
             <div class="flex items-center gap-2.5">
-              <button type="reset" class="px-5 py-2.5 rounded-full border border-slate-300 text-xs font-semibold text-slate-700 hover:bg-slate-50 transition">
+              <button type="button" id="btnBatalFormJadwal" class="px-5 py-2.5 rounded-full border border-slate-300 text-xs font-semibold text-slate-700 hover:bg-slate-50 transition">
                 Batal
               </button>
-              <button type="submit" class="px-6 py-2.5 rounded-full bg-[#2042B8] hover:bg-blue-800 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition">
-                <i data-lucide="save" class="w-3.5 h-3.5"></i> Simpan Perubahan Jadwal
+              <button type="submit" id="btnSimpanFormJadwal" class="px-6 py-2.5 rounded-full bg-[#2042B8] hover:bg-blue-800 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition">
+                <i data-lucide="save" class="w-3.5 h-3.5"></i> Simpan Mata Kuliah &amp; Jadwal
               </button>
             </div>
           </div>
@@ -413,9 +351,33 @@
     </main>
   </div>
 
+  <!-- Modal Konfirmasi Hapus Kelas (UC-11 Alt Flow 1) -->
+  <div id="modalHapusKelas" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-900/50 backdrop-blur-sm p-4">
+    <div class="bg-white rounded-3xl shadow-2xl max-w-md w-full p-7 space-y-5">
+      <div class="w-11 h-11 rounded-2xl bg-red-50 text-red-600 flex items-center justify-center">
+        <i data-lucide="trash-2" class="w-5 h-5"></i>
+      </div>
+      <div>
+        <h3 class="text-lg font-bold text-slate-900">Hapus Kelas &amp; Jadwal</h3>
+        <p id="modalHapusKelasDesc" class="text-xs text-slate-500 mt-1.5 leading-relaxed">
+          Apakah Anda yakin ingin menghapus kelas ini?
+        </p>
+      </div>
+      <div class="flex items-center justify-end gap-2.5 pt-2">
+        <button type="button" id="btnBatalHapusKelas" class="px-5 py-2.5 rounded-full border border-slate-300 text-xs font-semibold text-slate-700 hover:bg-slate-50 transition">
+          Batal
+        </button>
+        <button type="button" id="btnKonfirmasiHapusKelas" class="px-5 py-2.5 rounded-full bg-red-600 hover:bg-red-700 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition">
+          <i data-lucide="trash-2" class="w-3.5 h-3.5"></i> Ya, Hapus
+        </button>
+      </div>
+    </div>
+  </div>
+
   <script>lucide.createIcons();</script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="js/supabase-client.js"></script>
   <script src="js/auth-guard.js"></script>
+  <script src="js/admin-krs.js"></script>
 </body>
 </html>

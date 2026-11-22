@@ -121,20 +121,20 @@
           <div class="pb-4 sm:pb-0 sm:pr-6">
             <p class="text-[10px] font-bold tracking-wider text-slate-400 uppercase">Nomor Induk Mahasiswa</p>
             <p id="statNim" class="text-base font-extrabold text-slate-900 mt-1.5">255150407111067</p>
-            <p class="text-xs text-slate-500 mt-1">Angkatan 2025</p>
+            <p id="statAngkatan" class="text-xs text-slate-500 mt-1">Angkatan 2025</p>
           </div>
 
           <div class="py-4 sm:py-0 sm:px-6">
             <p class="text-[10px] font-bold tracking-wider text-slate-400 uppercase">Semester Aktif</p>
             <p id="statSemester" class="text-base font-extrabold text-[#2042B8] mt-1.5">Ganjil 2026/2027</p>
-            <p class="text-xs text-slate-500 mt-1">Semester 3 Reguler</p>
+            <p id="statSemesterSub" class="text-xs text-slate-500 mt-1">Memuat periode...</p>
           </div>
 
           <div class="py-4 sm:py-0 sm:px-6">
             <p class="text-[10px] font-bold tracking-wider text-slate-400 uppercase">IPS Semester Lalu</p>
             <div class="flex items-center gap-2 mt-1.5">
               <span id="statIps" class="text-xl font-extrabold text-slate-900">3.25</span>
-              <span class="bg-emerald-50 text-emerald-700 text-[11px] font-semibold px-2 py-0.5 rounded-full">Memuaskan</span>
+              <span id="statIpsPredicate" class="bg-emerald-50 text-emerald-700 text-[11px] font-semibold px-2 py-0.5 rounded-full">Memuaskan</span>
             </div>
             <p class="text-xs text-slate-500 mt-1">Indeks Prestasi Semester</p>
           </div>
@@ -154,7 +154,7 @@
       <section>
         <div class="flex items-center justify-between mb-4">
           <h3 class="text-base font-bold text-slate-900">Menu Utama KRS</h3>
-          <p class="text-xs text-slate-500">Periode Pengisian: <span class="font-semibold text-slate-700">10 Nov – 25 Nov 2026</span></p>
+          <p class="text-xs text-slate-500">Periode Pengisian: <span id="periodePengisianText" class="font-semibold text-slate-700">Memuat...</span></p>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
@@ -242,5 +242,6 @@
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="js/supabase-client.js"></script>
   <script src="js/auth-guard.js"></script>
+  <script src="js/mahasiswa-krs.js"></script>
 </body>
 </html>

@@ -89,13 +89,19 @@
     <!-- Content Body -->
     <main class="p-8 space-y-6 max-w-6xl w-full">
 
-      <!-- Alert Bentrok Jadwal -->
-      <div id="alertBentrok" class="bg-red-50 border border-red-200 rounded-xl px-5 py-3.5 flex flex-wrap items-center justify-between gap-3">
-        <div class="flex items-center gap-3 text-red-700 text-xs font-semibold">
-          <i data-lucide="alert-triangle" class="w-4 h-4 shrink-0 fill-red-600 text-white"></i>
-          <span>Tidak Valid – Bentrok Jadwal dengan <strong>SI2201 Rekayasa Sistem Informasi</strong> (Selasa, 08:00 – 10:30)</span>
+      <!-- Alert KRS Terkunci / Periode Berakhir -->
+      <div id="alertKrsTerkunci" class="hidden bg-amber-50 border border-amber-200 rounded-xl px-5 py-3.5 flex items-center gap-3 text-amber-800 text-xs font-semibold">
+        <i data-lucide="lock" class="w-4 h-4 shrink-0"></i>
+        <span id="alertKrsTerkunciText">KRS sedang diproses atau sudah disetujui, data hanya dapat dilihat.</span>
+      </div>
+
+      <!-- Alert Validasi / Bentrok Jadwal -->
+      <div id="alertBentrok" class="hidden bg-red-50 border border-red-200 rounded-xl px-5 py-3.5 flex flex-wrap items-center justify-between gap-3">
+        <div class="flex items-center gap-3 text-xs font-semibold">
+          <i data-lucide="alert-triangle" class="w-4 h-4 shrink-0"></i>
+          <span id="alertBentrokText"></span>
         </div>
-        <a href="#tbodyKrsSementara" class="text-xs font-bold text-red-700 hover:underline">Tinjau Jadwal</a>
+        <a id="alertBentrokAction" href="#tbodyKrsSementara" class="hidden text-xs font-bold underline">Tinjau Jadwal</a>
       </div>
 
       <!-- Daftar Mata Kuliah Tersedia -->
@@ -184,8 +190,8 @@
 
         <!-- Pagination Info -->
         <div class="px-6 py-3.5 bg-[#FAF9F5] border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
-          <span>Menampilkan 3 dari 28 mata kuliah aktif</span>
-          <span class="font-medium">Halaman 1 dari 10</span>
+          <span id="paginationInfoMk">Memuat daftar mata kuliah...</span>
+          <span class="font-medium">Real-time Supabase</span>
         </div>
       </section>
 
@@ -198,7 +204,7 @@
             <h3 class="text-sm font-bold">Ringkasan KRS Sementara</h3>
           </div>
           <span id="totalSksBadge" class="bg-white text-[#2042B8] text-xs font-extrabold px-3.5 py-1 rounded-full">
-            Total SKS: 7 / 24 SKS
+            Total SKS: 0 / 24 SKS
           </span>
         </div>
 
@@ -215,24 +221,7 @@
             </thead>
             <tbody id="tbodyKrsSementara" class="divide-y divide-slate-100 text-xs">
               <tr>
-                <td class="py-3.5 px-6 font-bold text-[#2042B8]">SI2201</td>
-                <td class="py-3.5 px-4 font-semibold text-slate-800">Rekayasa Sistem Informasi (Kelas SI-B)</td>
-                <td class="py-3.5 px-4 text-center font-bold">3</td>
-                <td class="py-3.5 px-6 text-right">
-                  <button class="bg-red-600 hover:bg-red-700 text-white font-semibold px-3.5 py-1.5 rounded-full inline-flex items-center gap-1.5 transition">
-                    <i data-lucide="trash-2" class="w-3.5 h-3.5"></i> Hapus
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td class="py-3.5 px-6 font-bold text-[#2042B8]">SI2202</td>
-                <td class="py-3.5 px-4 font-semibold text-slate-800">Basis Data Lanjut (Kelas SI-A)</td>
-                <td class="py-3.5 px-4 text-center font-bold">4</td>
-                <td class="py-3.5 px-6 text-right">
-                  <button class="bg-red-600 hover:bg-red-700 text-white font-semibold px-3.5 py-1.5 rounded-full inline-flex items-center gap-1.5 transition">
-                    <i data-lucide="trash-2" class="w-3.5 h-3.5"></i> Hapus
-                  </button>
-                </td>
+                <td colspan="4" class="py-6 px-6 text-center text-slate-400">Memuat ringkasan KRS sementara...</td>
               </tr>
             </tbody>
           </table>
@@ -254,5 +243,6 @@
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="js/supabase-client.js"></script>
   <script src="js/auth-guard.js"></script>
+  <script src="js/mahasiswa-krs.js"></script>
 </body>
 </html>

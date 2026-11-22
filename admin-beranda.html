@@ -76,22 +76,22 @@
       <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
         <div class="bg-white rounded-2xl p-6 border border-slate-200/70 shadow-sm">
           <p class="text-[10px] font-bold tracking-wider text-slate-400 uppercase">Total Kelas Aktif</p>
-          <p class="text-2xl font-extrabold text-[#2042B8] mt-2">142</p>
+          <p id="adminStatTotalKelas" class="text-2xl font-extrabold text-[#2042B8] mt-2">0</p>
         </div>
 
         <div class="bg-white rounded-2xl p-6 border border-slate-200/70 shadow-sm">
           <p class="text-[10px] font-bold tracking-wider text-slate-400 uppercase">Total Mahasiswa Terdaftar</p>
-          <p class="text-2xl font-extrabold text-slate-900 mt-2">4.890</p>
+          <p id="adminStatTotalMhs" class="text-2xl font-extrabold text-slate-900 mt-2">0</p>
         </div>
 
         <div class="bg-white rounded-2xl p-6 border border-slate-200/70 shadow-sm">
           <p class="text-[10px] font-bold tracking-wider text-slate-400 uppercase">Kelas Kapasitas Penuh</p>
-          <p class="text-2xl font-extrabold text-red-600 mt-2">18</p>
+          <p id="adminStatKelasPenuh" class="text-2xl font-extrabold text-red-600 mt-2">0</p>
         </div>
 
         <div class="bg-white rounded-2xl p-6 border border-slate-200/70 shadow-sm">
           <p class="text-[10px] font-bold tracking-wider text-slate-400 uppercase">Rasio Keterisian Total</p>
-          <p class="text-2xl font-extrabold text-[#2042B8] mt-2">94.0%</p>
+          <p id="adminStatRasioKeterisian" class="text-2xl font-extrabold text-[#2042B8] mt-2">0.0%</p>
         </div>
       </section>
 
@@ -116,7 +116,7 @@
           <div class="space-y-3">
             <a href="admin-kuota-kelas.html" class="flex items-center justify-between p-3.5 rounded-xl hover:bg-slate-50 border border-transparent hover:border-slate-200/70 transition group">
               <div class="flex items-center gap-3.5">
-                <div class="w-10 h-10 rounded-xl bg-red-50 text-red-600 font-extrabold text-sm flex items-center justify-center shrink-0">18</div>
+                <div id="adminPerhatianPenuhCount" class="w-10 h-10 rounded-xl bg-red-50 text-red-600 font-extrabold text-sm flex items-center justify-center shrink-0">0</div>
                 <div>
                   <p class="text-xs font-bold text-slate-900">Kelas mencapai kapasitas penuh</p>
                   <p class="text-[11px] text-slate-500 mt-0.5">Evaluasi dan sesuaikan kuota kelas</p>
@@ -127,7 +127,7 @@
 
             <a href="admin-kelola-jadwal.html" class="flex items-center justify-between p-3.5 rounded-xl hover:bg-slate-50 border border-transparent hover:border-slate-200/70 transition group">
               <div class="flex items-center gap-3.5">
-                <div class="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 font-extrabold text-sm flex items-center justify-center shrink-0">1</div>
+                <div id="adminPerhatianKonflikCount" class="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 font-extrabold text-sm flex items-center justify-center shrink-0">0</div>
                 <div>
                   <p class="text-xs font-bold text-slate-900">Konflik jadwal terdeteksi</p>
                   <p class="text-[11px] text-slate-500 mt-0.5">Periksa alokasi ruang dan dosen</p>
@@ -143,11 +143,11 @@
           <h3 class="text-sm font-bold text-slate-900">Aktivitas Sistem</h3>
 
           <div>
-            <p class="text-sm font-extrabold text-slate-900">Periode KRS sedang berlangsung</p>
-            <p class="text-xs text-slate-500 mt-1">4.608 dari 4.890 mahasiswa telah mengajukan KRS.</p>
+            <p id="adminPeriodeStatusTitle" class="text-sm font-extrabold text-slate-900">Memuat periode KRS...</p>
+            <p id="adminPeriodeProgresText" class="text-xs text-slate-500 mt-1">Menghitung progres pengajuan KRS...</p>
 
             <div class="w-full h-2.5 bg-slate-100 rounded-full overflow-hidden mt-4">
-              <div class="h-full bg-[#2042B8] rounded-full" style="width: 94%;"></div>
+              <div id="adminPeriodeProgressBar" class="h-full bg-[#2042B8] rounded-full transition-all" style="width: 0%;"></div>
             </div>
           </div>
         </div>
@@ -160,5 +160,6 @@
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="js/supabase-client.js"></script>
   <script src="js/auth-guard.js"></script>
+  <script src="js/admin-krs.js"></script>
 </body>
 </html>
